@@ -13,3 +13,19 @@
  *= require_tree .
  *= require_self
  */
+@import "bootstrap";
+@import 'font-awesome-sprockets';
+@import 'font-awesome';
+
+div.field, div.actions {
+    margin-bottms: 10px;
+}
+
+.navbar-inverse {
+    background-color: #222;
+    border-color: #090909;
+}
+
+header {
+  color: white;cd
+}

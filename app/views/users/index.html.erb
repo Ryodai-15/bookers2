@@ -22,9 +22,12 @@
       </table>
       <div class = "row">
         <% if @user.id == current_user.id %>
-          <P><%= link_to "", edit_user_path(@user), class: "col-xs-12 btn btn-default glyphicon glyphicon-wrench" %></P>
+          <%= link_to("/users/:id/edit") do %>
+            <i class="fas fa-user-cog"></i>
+          <% end %>
         <% end %>
       </div>
+      
 
       <h2>New book</h2>
       <%= form_with model: @book, local:true do |f| %>

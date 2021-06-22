@@ -28,6 +28,7 @@
         <% end %>
       </div>
 
+
       <h2>New book</h2>
       <%= form_with model: @new, local:true do |f| %>
         <div class = "field row">
@@ -43,19 +44,22 @@
         </div>
       <% end %>
     </div>
+
+
     <div class = "col-lg-9">
       <h2>Book detail</h2>
       <table class = "table table-striped">
         <thead>
+          <tr>
             <th colspan="4"></th>
           </tr>
         </thead>
         <tbody>
           <tr>
             <td>
-            <%= link_to user_path(@book) do %>
+            <%= link_to user_path(@book.user_id) do %>
               <%= attachment_image_tag @book.user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg" %><br>
-              <%= link_to @book.user.name, users_path　%>
+              <%= link_to @book.user.name, user_path(@book.user_id)　%>
             <% end %>
             </td>
             <td><%= link_to @book.title,book_path(@book) %></td>

@@ -21,6 +21,14 @@
         </tbody>
       </table>
       <div class = "row">
+        <% if @user.id == current_user.id %>
+          <%= link_to("/users/:id/edit") do %>
+            <i class="fas fa-user-cog"></i>
+          <% end %>
+        <% end %>
+      </div>
+
+      <div class = "row">
       </div>
 
       <h2>New book</h2>

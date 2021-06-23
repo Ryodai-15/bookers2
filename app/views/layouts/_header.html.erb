@@ -13,7 +13,6 @@
         <% if user_signed_in? %>
           <li class="">
             <%= link_to ' Home', user_path(current_user.id), class: "fas fa-home nav-link text-light" %>
-            <!--Bookersに飛ぼうとするとエラーが起きる、何故 → サインインしているユーザーに変更したら解決-->
           </li>
           <li class="">
             <%= link_to ' Users', users_path, class: "fas fa-users nav-link text-light" %>

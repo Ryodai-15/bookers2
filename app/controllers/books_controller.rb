@@ -2,11 +2,14 @@ class BooksController < ApplicationController
 
   before_action :authenticate_user!
 
+   before_action :correct_user, only: [:edit, :update]
+
+
   def create
     @book = Book.new(book_params)
     @book.user_id = current_user.id
     if @book.save
-      flash[:notice] = " Book was sucessfully created. "
+      flash[:notice] = "successfully"
       redirect_to book_path(@book)
     else
       @books = Book.all
@@ -40,7 +43,7 @@ class BooksController < ApplicationController
     @book = Book.find(params[:id])
     @book.update(book_params)
     if @book.save
-      flash[:notice] = " Book was sucessfully updated. "
+      flash[:notice] = " successfully "
       redirect_to book_path(@book)
     else
       render :edit
@@ -59,4 +62,11 @@ class BooksController < ApplicationController
     params.require(:book).permit(:title, :body)
   end
 
+  def correct_user
+    @book = Book.find(params[:id]) # idをもとにPost（投稿）を特定
+    @user = @book.user             # 特定されたPostに紐づくUserを特定し、@userに入れる
+    if current_user != @user       # 現在ログインしているユーザー（編集者）と@user（投稿者）が異なったら
+      redirect_to books_path       # 一覧ページにリダイレクトさせる
+    end
+  end
 end

@@ -1,3 +1,14 @@
+<% if @user.errors.any? %>
+        <div id="error_explanation">
+          <h2>error</h2>
+          <ul style = "color: red">
+            <% @user.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+
 <h2>User info</h2>
 <%= form_with model: @user, local:true do |f| %>
   <div class = "form-icon">
